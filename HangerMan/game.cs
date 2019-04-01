@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/*Klasa zawiera praktycznie wszystkie elementy potrzebne
+ * do poprawnej rozgrywki.*/
+
 namespace HangerMan
 {
     class game
@@ -14,10 +17,8 @@ namespace HangerMan
         private int lives;
         private string tip;
         private int if_win;
-        private int id;
-        public game(string str, int liv, string tp, int id)
+        public game(string str, int liv, string tp)
         {
-            this.id = id;
             if_win = 0;
             question = str;
             lives = liv;
@@ -82,10 +83,6 @@ namespace HangerMan
                 if_win = 2; //2 oznacza koniec szans
             }
             return if_win;
-        }
-        public int return_id()
-        {
-            return id;
         }
     };
 }
