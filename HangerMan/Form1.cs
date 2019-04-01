@@ -19,7 +19,19 @@ namespace HangerMan
         {
             db1 = new game_db("geography");
             InitializeComponent();
-            start_game();
+        }
+
+        private void hide_show_controls(bool one, bool two)
+        {
+            label1.Visible = one;
+            label2.Visible = one;
+            label3.Visible = one;
+            panel1.Visible = one;
+            button27.Visible = one;
+            button39.Visible = one;
+            button40.Visible = two;
+            button28.Visible = two;
+            button41.Visible = two;
         }
 
         private void start_game()//Funkcja która rozpoczyna grę, tworzy nowy obiekt oraz pokazuje ukryte kontrolki
@@ -32,9 +44,9 @@ namespace HangerMan
             label1.Text = g1.return_hidden_quest();
             label2.Text = "Chances: " + g1.return_lives().ToString();
             label3.Text = "Tip: " + g1.return_tip();
-            label3.Visible = true;
+            hide_show_controls(true, false); //ukryj kontrolki menu, pokaz kontrolki rozgrywki
             comp_results = 0;
-            foreach(Control ctrl in panel1.Controls)
+            foreach(Control ctrl in panel1.Controls)//Pętla pokazująca wszystkie buttony które zostały zakryte podczas rozgrywki.
             {
                 if (ctrl is Button)
                 {
@@ -74,6 +86,40 @@ namespace HangerMan
         {
             g1 = null;
             this.Close();
+        }
+
+        //Funkcja pokazująca menu
+        private void button39_Click(object sender, EventArgs e)
+        {
+            g1 = null;
+            hide_show_controls(false, true); //pokaz kontrolki menu, ukryj kontrolki rozgrywki
+        }
+        //Funkcja rozpoczynająca grę
+        private void button41_Click(object sender, EventArgs e)
+        {
+            start_game();
+        }
+
+        //Wybranie nowej kategorii
+        private void button40_Click(object sender, EventArgs e)
+        {
+            comboBox1.Visible = true;
+            hide_show_controls(false, false);
+            db1.restart_id_tab();
+            comboBox1.Items.Clear();
+            for(int i=0; i<db1.return_nmb_of_tables(); i++)
+            {
+                comboBox1.Items.Add(db1.return_tablename_by_index(i));
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string cat;
+            cat = comboBox1.SelectedItem.ToString();
+            comboBox1.Visible = false;
+            hide_show_controls(false, true);
+            db1.change_category(cat);
         }
     }
     

@@ -71,6 +71,10 @@
             this.button37 = new System.Windows.Forms.Button();
             this.button38 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button39 = new System.Windows.Forms.Button();
+            this.button40 = new System.Windows.Forms.Button();
+            this.button41 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,6 +89,7 @@
             this.label1.Size = new System.Drawing.Size(221, 56);
             this.label1.TabIndex = 0;
             this.label1.Text = "Something";
+            this.label1.Visible = false;
             // 
             // label2
             // 
@@ -98,6 +103,7 @@
             this.label2.Size = new System.Drawing.Size(106, 26);
             this.label2.TabIndex = 28;
             this.label2.Text = "Chances: 0";
+            this.label2.Visible = false;
             // 
             // label3
             // 
@@ -111,6 +117,7 @@
             this.label3.Size = new System.Drawing.Size(40, 26);
             this.label3.TabIndex = 29;
             this.label3.Text = "tip:";
+            this.label3.Visible = false;
             // 
             // button27
             // 
@@ -120,12 +127,13 @@
             this.button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button27.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button27.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button27.Location = new System.Drawing.Point(518, 225);
+            this.button27.Location = new System.Drawing.Point(503, 346);
             this.button27.Name = "button27";
             this.button27.Size = new System.Drawing.Size(121, 49);
             this.button27.TabIndex = 30;
             this.button27.Text = "Restart!";
             this.button27.UseVisualStyleBackColor = false;
+            this.button27.Visible = false;
             this.button27.Click += new System.EventHandler(this.button27_Click);
             // 
             // button28
@@ -136,7 +144,7 @@
             this.button28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button28.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button28.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button28.Location = new System.Drawing.Point(518, 272);
+            this.button28.Location = new System.Drawing.Point(282, 263);
             this.button28.Name = "button28";
             this.button28.Size = new System.Drawing.Size(121, 49);
             this.button28.TabIndex = 31;
@@ -728,6 +736,69 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(653, 137);
             this.panel1.TabIndex = 27;
+            this.panel1.Visible = false;
+            // 
+            // button39
+            // 
+            this.button39.BackColor = System.Drawing.Color.Transparent;
+            this.button39.FlatAppearance.BorderSize = 0;
+            this.button39.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button39.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button39.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button39.Location = new System.Drawing.Point(503, 291);
+            this.button39.Name = "button39";
+            this.button39.Size = new System.Drawing.Size(121, 49);
+            this.button39.TabIndex = 32;
+            this.button39.Text = "Menu";
+            this.button39.UseVisualStyleBackColor = false;
+            this.button39.Visible = false;
+            this.button39.Click += new System.EventHandler(this.button39_Click);
+            // 
+            // button40
+            // 
+            this.button40.BackColor = System.Drawing.Color.Transparent;
+            this.button40.FlatAppearance.BorderSize = 0;
+            this.button40.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button40.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button40.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button40.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button40.Location = new System.Drawing.Point(282, 208);
+            this.button40.Name = "button40";
+            this.button40.Size = new System.Drawing.Size(121, 49);
+            this.button40.TabIndex = 33;
+            this.button40.Text = "Category";
+            this.button40.UseVisualStyleBackColor = false;
+            this.button40.Click += new System.EventHandler(this.button40_Click);
+            // 
+            // button41
+            // 
+            this.button41.BackColor = System.Drawing.Color.Transparent;
+            this.button41.FlatAppearance.BorderSize = 0;
+            this.button41.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button41.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button41.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button41.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button41.Location = new System.Drawing.Point(282, 153);
+            this.button41.Name = "button41";
+            this.button41.Size = new System.Drawing.Size(121, 49);
+            this.button41.TabIndex = 34;
+            this.button41.Text = "Start";
+            this.button41.UseVisualStyleBackColor = false;
+            this.button41.Click += new System.EventHandler(this.button41_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.DarkGreen;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Comic Sans MS", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.comboBox1.ForeColor = System.Drawing.SystemColors.Window;
+            this.comboBox1.Location = new System.Drawing.Point(242, 208);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(224, 36);
+            this.comboBox1.TabIndex = 36;
+            this.comboBox1.Visible = false;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
@@ -736,12 +807,16 @@
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(684, 564);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.button41);
+            this.Controls.Add(this.button40);
+            this.Controls.Add(this.button39);
             this.Controls.Add(this.button28);
             this.Controls.Add(this.button27);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(700, 603);
             this.MinimumSize = new System.Drawing.Size(700, 603);
@@ -797,6 +872,10 @@
         private System.Windows.Forms.Button button37;
         private System.Windows.Forms.Button button38;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button button39;
+        private System.Windows.Forms.Button button40;
+        private System.Windows.Forms.Button button41;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 
