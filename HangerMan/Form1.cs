@@ -17,7 +17,7 @@ namespace HangerMan
         private game_db db1; //Obiekt klasy game_db, połączenie z bazą danych.
         public Form1()
         {
-            db1 = new game_db("geography");
+            db1 = new game_db("cars");
             InitializeComponent();
         }
 
@@ -105,7 +105,6 @@ namespace HangerMan
         {
             comboBox1.Visible = true;
             hide_show_controls(false, false);
-            db1.restart_id_tab();
             comboBox1.Items.Clear();
             for(int i=0; i<db1.return_nmb_of_tables(); i++)
             {
@@ -113,13 +112,13 @@ namespace HangerMan
             }
         }
 
+        //Kod zostanie wykonany po zmianie indexu ComboBoxa
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string cat;
-            cat = comboBox1.SelectedItem.ToString();
             comboBox1.Visible = false;
             hide_show_controls(false, true);
-            db1.change_category(cat);
+            db1.change_category(comboBox1.SelectedItem.ToString()); //Wywloanie funkcji w celu zmiany kategorii
+            db1.restart_id_tab(); //zresetowanie tablicy przechowujacaej tymczasowe pytania
         }
     }
     

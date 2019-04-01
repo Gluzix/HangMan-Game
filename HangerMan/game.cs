@@ -17,10 +17,10 @@ namespace HangerMan
         private int lives;
         private string tip;
         private int if_win;
-        public game(string str, int liv, string tp)
+        public game(string str, int liv, string tp) 
         {
-            if_win = 0;
-            question = str;
+            if_win = 0; 
+            question = str; 
             lives = liv;
             tip = tp;
             length_of_question = str.Length;
