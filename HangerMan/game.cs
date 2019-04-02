@@ -17,8 +17,10 @@ namespace HangerMan
         private int lives;
         private string tip;
         private int if_win;
+        private int mode;
         public game(string str, int liv, string tp) 
         {
+            mode = 0; //0 normalny tryb, 1 na czas
             if_win = 0; 
             question = str; 
             lives = liv;
@@ -32,7 +34,7 @@ namespace HangerMan
             }
         }
         ~game(){}
-        public void check_entered_char(string str)
+        public int check_entered_char(string str)
         {
             char znak = str[0];
             int shooted = 0;
@@ -52,7 +54,9 @@ namespace HangerMan
             if(shooted==0)
             {
                 lives--;
+                return 0;
             }
+            return 1;
         }
         public string return_hidden_quest()
         {
@@ -83,6 +87,17 @@ namespace HangerMan
                 if_win = 2; //2 oznacza koniec szans
             }
             return if_win;
+        }
+        public int ret_mode()
+        {
+            return mode;
+        }
+        public void set_mode(int x)
+        {
+            if(x==0 || x==1)
+            {
+                mode = x;
+            }
         }
     };
 }

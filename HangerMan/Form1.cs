@@ -15,8 +15,18 @@ namespace HangerMan
         private int comp_results = 0; //Zmienna która okresla czy gracz przegrał/wygrał/wciąz gra
         private game g1; //Obiekt klasy game, czyli klasy która zawiera wszystkie informacje potrzebne graczowi
         private game_db db1; //Obiekt klasy game_db, połączenie z bazą danych.
+        private Bitmap[] img;
+        private int mode=0;
+        private int img_counter = 0;
         public Form1()
         {
+            img = new Bitmap[6];
+            img[0] = Properties.Resources.Hang_0;
+            img[1] = Properties.Resources.Hang_1;
+            img[2] = Properties.Resources.Hang_2;
+            img[3] = Properties.Resources.Hang_3;
+            img[4] = Properties.Resources.Hang_4;
+            img[5] = Properties.Resources.Hang_5;
             db1 = new game_db("cars");
             InitializeComponent();
         }
@@ -27,11 +37,15 @@ namespace HangerMan
             label2.Visible = one;
             label3.Visible = one;
             panel1.Visible = one;
+            panel2.Visible = one;
             button27.Visible = one;
             button39.Visible = one;
-            button40.Visible = two;
-            button28.Visible = two;
-            button41.Visible = two;
+            panel3.Visible = two;
+        }
+        private void hide_img()
+        {
+            pictureBox1.Image = null;
+            img_counter = 0;
         }
 
         private void start_game()//Funkcja która rozpoczyna grę, tworzy nowy obiekt oraz pokazuje ukryte kontrolki
@@ -39,6 +53,7 @@ namespace HangerMan
             db1.rand_nmb();
             //Połączenie z bazą danych          
             g1 = new game(db1.return_string("question"), 6, db1.return_string("tip"));
+            g1.set_mode(mode); //ustawienie trybu gry
             //utworzenie obiektu gry. zwracane sa tutaj pytanie oraz podpowiedz, w celu utworzenia obiektu
             //Question, lives, Tip, ID
             label1.Text = g1.return_hidden_quest();
@@ -53,13 +68,24 @@ namespace HangerMan
                     ctrl.Visible = true;
                 }
             }
+            foreach (Control ctrl in panel2.Controls)//Pętla pokazująca reszte buttonow które zostały zakryte podczas rozgrywki.
+            {
+                if (ctrl is Button)
+                {
+                    ctrl.Visible = true;
+                }
+            }
         }
 
         private void button_Click(object sender, EventArgs e) //Jedna funkcja do obsługi wszystkich buttonów od a do z
         {
             if (comp_results!=1 && comp_results != 2)
             {
-                g1.check_entered_char((sender as Button).Text); //Sprawdzenie czy wybrany znak zgadza się z którymkolwiek w stringu
+                if(g1.check_entered_char((sender as Button).Text)==0)
+                {
+                    pictureBox1.Image = img[img_counter];
+                    img_counter++;
+                } //Sprawdzenie czy wybrany znak zgadza się z którymkolwiek w stringu oraz rysowanie wisielca na ekranie
                 label1.Text = g1.return_hidden_quest(); //Odświeżenie ukrytego stringa
                 (sender as Button).Visible = false; //Ukrycie wybranego buttona w celu eliminacji ponownego klikania w użytą kontrolkę
                 label2.Text = "Chances: " + g1.return_lives().ToString(); //Wypisanie ilości żyć
@@ -67,7 +93,7 @@ namespace HangerMan
                 if (comp_results==1)
                 {
                     label3.Visible = false;
-                    label2.Text = " Gratulacje, Wygrałeś!\n Pozostalo Ci: " + g1.return_lives().ToString() + " Szans!";
+                    label2.Text = " Gratulacje, Wygrałeś!";
                 }
                 else if (comp_results == 2)
                 {
@@ -77,10 +103,12 @@ namespace HangerMan
                 }
             }
         }
+        //Restart
         private void button27_Click(object sender, EventArgs e)
         {
             g1 = null;//Zniszczenie obiektu w celu zagrania od nowa
             start_game(); // wywolanie funkcji tworzacej rozgrywke
+            hide_img();
         }
         private void button28_Click(object sender, EventArgs e)
         {
@@ -93,6 +121,7 @@ namespace HangerMan
         {
             g1 = null;
             hide_show_controls(false, true); //pokaz kontrolki menu, ukryj kontrolki rozgrywki
+            hide_img();
         }
         //Funkcja rozpoczynająca grę
         private void button41_Click(object sender, EventArgs e)
@@ -119,6 +148,29 @@ namespace HangerMan
             hide_show_controls(false, true);
             db1.change_category(comboBox1.SelectedItem.ToString()); //Wywloanie funkcji w celu zmiany kategorii
             db1.restart_id_tab(); //zresetowanie tablicy przechowujacaej tymczasowe pytania
+        }
+
+        //Funkcja odpowiadająca za zmianę trybów gry.
+        private void button50_Click(object sender, EventArgs e)
+        {
+            hide_show_controls(false, false);
+            panel4.Visible = true;
+        }
+
+        //Tryb normalny
+        private void button51_Click(object sender, EventArgs e)
+        {
+            mode = 0;
+            hide_show_controls(false, true);
+            panel4.Visible = false;
+        }
+
+        //Tryb na czas
+        private void button52_Click(object sender, EventArgs e)
+        {
+            mode = 1;
+            hide_show_controls(false, true);
+            panel4.Visible = false;
         }
     }
     
