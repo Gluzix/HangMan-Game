@@ -1,0 +1,12 @@
+D:\NetFramework\HangerMan\HangerMan\bin\Release\HangerMan.exe.config
+D:\NetFramework\HangerMan\HangerMan\bin\Release\HangerMan.exe
+D:\NetFramework\HangerMan\HangerMan\bin\Release\HangerMan.pdb
+D:\NetFramework\HangerMan\HangerMan\bin\Release\System.Data.SQLite.dll
+D:\NetFramework\HangerMan\HangerMan\bin\Release\System.Data.SQLite.xml
+D:\NetFramework\HangerMan\HangerMan\obj\Release\HangerMan.Form1.resources
+D:\NetFramework\HangerMan\HangerMan\obj\Release\HangerMan.Properties.Resources.resources
+D:\NetFramework\HangerMan\HangerMan\obj\Release\HangerMan.csproj.GenerateResource.cache
+D:\NetFramework\HangerMan\HangerMan\obj\Release\HangerMan.csproj.CoreCompileInputs.cache
+D:\NetFramework\HangerMan\HangerMan\obj\Release\HangerMan.csproj.CopyComplete
+D:\NetFramework\HangerMan\HangerMan\obj\Release\HangerMan.exe
+D:\NetFramework\HangerMan\HangerMan\obj\Release\HangerMan.pdb

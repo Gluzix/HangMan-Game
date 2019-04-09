@@ -226,5 +226,12 @@ namespace HangerMan
             hide_show_controls(false, true);
             panel4.Visible = false;
         }
+
+        //Tryb Online
+        private void button53_Click(object sender, EventArgs e)
+        {
+            hide_show_controls(false, true);
+            panel4.Visible = false;
+        }
     }
 }

@@ -91,6 +91,7 @@
             this.button51 = new System.Windows.Forms.Button();
             this.button52 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button53 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -998,11 +999,12 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Transparent;
+            this.panel4.Controls.Add(this.button53);
             this.panel4.Controls.Add(this.button51);
             this.panel4.Controls.Add(this.button52);
             this.panel4.Location = new System.Drawing.Point(288, 167);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(129, 130);
+            this.panel4.Size = new System.Drawing.Size(129, 173);
             this.panel4.TabIndex = 41;
             this.panel4.Visible = false;
             // 
@@ -1050,6 +1052,23 @@
             this.label4.TabIndex = 42;
             this.label4.Text = "Czas: 30";
             this.label4.Visible = false;
+            // 
+            // button53
+            // 
+            this.button53.BackColor = System.Drawing.Color.Transparent;
+            this.button53.Enabled = false;
+            this.button53.FlatAppearance.BorderSize = 0;
+            this.button53.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.button53.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button53.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.button53.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button53.Location = new System.Drawing.Point(3, 110);
+            this.button53.Name = "button53";
+            this.button53.Size = new System.Drawing.Size(121, 49);
+            this.button53.TabIndex = 40;
+            this.button53.Text = "Online";
+            this.button53.UseVisualStyleBackColor = false;
+            this.button53.Click += new System.EventHandler(this.button53_Click);
             // 
             // Form1
             // 
@@ -1149,6 +1168,7 @@
         private System.Windows.Forms.Button button51;
         private System.Windows.Forms.Button button52;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button53;
     }
 }
 
