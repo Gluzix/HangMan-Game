@@ -12,12 +12,15 @@ namespace HangerMan
 {
     public partial class Form1 : Form
     {
+        private int time_counter = 30;
+        private System.Timers.Timer couter_timer;
         private int comp_results = 0; //Zmienna która okresla czy gracz przegrał/wygrał/wciąz gra
         private game g1; //Obiekt klasy game, czyli klasy która zawiera wszystkie informacje potrzebne graczowi
         private game_db db1; //Obiekt klasy game_db, połączenie z bazą danych.
         private Bitmap[] img;
         private int mode=0;
         private int img_counter = 0;
+
         public Form1()
         {
             img = new Bitmap[6];
@@ -31,6 +34,34 @@ namespace HangerMan
             InitializeComponent();
         }
 
+        private void count_the_time()
+        {
+            time_counter = 30;
+            couter_timer = new System.Timers.Timer();
+            couter_timer.Interval = 1000;
+            couter_timer.Elapsed += count_tt;
+            couter_timer.Start();
+        }
+
+        private void count_tt(object info, System.Timers.ElapsedEventArgs e)
+        {
+            Invoke(new Action(()=>
+            {
+                if(time_counter<=0)
+                {
+                    g1.if_time_is_out(2);
+                    label3.Visible = false;
+                    label1.Text = g1.return_quest();
+                    label2.Text = " Zabrakło czasu!!!";
+                }
+                else
+                {
+                    time_counter--;
+                    label4.Text = "Czas: " + time_counter.ToString();
+                }
+            }));
+        }
+
         private void hide_show_controls(bool one, bool two)
         {
             label1.Visible = one;
@@ -42,6 +73,7 @@ namespace HangerMan
             button39.Visible = one;
             panel3.Visible = two;
         }
+
         private void hide_img()
         {
             pictureBox1.Image = null;
@@ -54,8 +86,8 @@ namespace HangerMan
             //Połączenie z bazą danych          
             g1 = new game(db1.return_string("question"), 6, db1.return_string("tip"));
             g1.set_mode(mode); //ustawienie trybu gry
-            //utworzenie obiektu gry. zwracane sa tutaj pytanie oraz podpowiedz, w celu utworzenia obiektu
-            //Question, lives, Tip, ID
+                               //utworzenie obiektu gry. zwracane sa tutaj pytanie oraz podpowiedz, w celu utworzenia obiektu
+                               //Question, lives, Tip, ID
             label1.Text = g1.return_hidden_quest();
             label2.Text = "Chances: " + g1.return_lives().ToString();
             label3.Text = "Tip: " + g1.return_tip();
@@ -79,6 +111,7 @@ namespace HangerMan
 
         private void button_Click(object sender, EventArgs e) //Jedna funkcja do obsługi wszystkich buttonów od a do z
         {
+            comp_results = g1.compare_results();
             if (comp_results!=1 && comp_results != 2)
             {
                 if(g1.check_entered_char((sender as Button).Text)==0)
@@ -94,12 +127,14 @@ namespace HangerMan
                 {
                     label3.Visible = false;
                     label2.Text = " Gratulacje, Wygrałeś!";
+                    label4.Visible = false;
                 }
                 else if (comp_results == 2)
                 {
                     label3.Visible = false;
                     label1.Text = g1.return_quest();
                     label2.Text = " Niestety przegrałeś!!";
+                    label4.Visible = false;
                 }
             }
         }
@@ -109,16 +144,29 @@ namespace HangerMan
             g1 = null;//Zniszczenie obiektu w celu zagrania od nowa
             start_game(); // wywolanie funkcji tworzacej rozgrywke
             hide_img();
+            if (g1.ret_mode() == 1) //Przy restarcie, counter musi zostac zresetowany, dlatego trzeba go najpierw zatrzymac.
+            {
+                label4.Visible = true;
+                couter_timer.Stop();
+                couter_timer = null;
+                count_the_time();
+                label4.Text = "Czas: " + time_counter.ToString();
+            }
         }
-        private void button28_Click(object sender, EventArgs e)
+        private void button28_Click(object sender, EventArgs e)//END
         {
             g1 = null;
             this.Close();
-        }
+        } 
 
         //Funkcja pokazująca menu
         private void button39_Click(object sender, EventArgs e)
         {
+            if (g1.ret_mode() == 1) // Przy wyjsciu do menu, counter musi zostac zatrzymany oraz label z napisem czas musi zostac ukryty
+            {
+                couter_timer.Stop();
+                label4.Visible = false;
+            }
             g1 = null;
             hide_show_controls(false, true); //pokaz kontrolki menu, ukryj kontrolki rozgrywki
             hide_img();
@@ -127,6 +175,12 @@ namespace HangerMan
         private void button41_Click(object sender, EventArgs e)
         {
             start_game();
+            if(g1.ret_mode()==1) //Przy rozpoczynaniu nowej gry, Musimy stworzyć obiekt klasy Timer, pokazać label4, oraz wpisac do niego odpowiedni ciag znakow
+            {
+                count_the_time();
+                label4.Visible = true;
+                label4.Text = "Czas: " + time_counter.ToString();
+            }
         }
 
         //Wybranie nowej kategorii
@@ -173,5 +227,4 @@ namespace HangerMan
             panel4.Visible = false;
         }
     }
-    
 }

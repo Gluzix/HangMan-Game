@@ -99,5 +99,9 @@ namespace HangerMan
                 mode = x;
             }
         }
+        public void if_time_is_out(int x)
+        {
+            if_win = x;
+        }
     };
 }

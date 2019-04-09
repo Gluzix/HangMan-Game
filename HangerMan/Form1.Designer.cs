@@ -90,6 +90,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.button51 = new System.Windows.Forms.Button();
             this.button52 = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -969,7 +970,6 @@
             // button50
             // 
             this.button50.BackColor = System.Drawing.Color.Transparent;
-            this.button50.Enabled = false;
             this.button50.FlatAppearance.BorderSize = 0;
             this.button50.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.button50.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1038,6 +1038,19 @@
             this.button52.UseVisualStyleBackColor = false;
             this.button52.Click += new System.EventHandler(this.button52_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(12, 13);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(89, 26);
+            this.label4.TabIndex = 42;
+            this.label4.Text = "Czas: 30";
+            this.label4.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1045,6 +1058,7 @@
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(684, 564);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.pictureBox1);
@@ -1134,6 +1148,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button button51;
         private System.Windows.Forms.Button button52;
+        private System.Windows.Forms.Label label4;
     }
 }
 
